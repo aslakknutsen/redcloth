@@ -93,6 +93,18 @@ module RedCloth
       to(RedCloth::Formatters::LATEX)
     end
 
+    #
+    # Generates AsciiDoc from the Textile contents.
+    #
+    #   RedCloth.new( "And then? She *fell*!" ).to_latex
+    #     #=> "And then? She *fell*!\n\n"
+    #
+    def to_asciidoc( *rules )
+      apply_rules(rules)
+
+      to(RedCloth::Formatters::ASCIIDOC)
+    end
+
     private
     def apply_rules(rules)
       rules.each do |r|

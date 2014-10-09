@@ -8,20 +8,34 @@ in: |-
 html: |-
   <p>A single paragraph.</p>
   <p>Followed by another.</p>
+asciidoc: |+
+  A single paragraph.
+
+  Followed by another.
 ---
 name: blocks with spaces on the blank line in between
 in: "This is line one\n \nThis is line two"
 html: "<p>This is line one</p>\n<p>This is line two</p>"
+asciidoc: |+
+  This is line one
+
+  This is line two
 ---
 name: blocks with tabl on the blank line in between
 in: "This is line one\n\t\nThis is line two"
 html: "<p>This is line one</p>\n<p>This is line two</p>"
+asciidoc: |+
+  This is line one
+
+  This is line two
 ---
 name: block containing block start
 in: |-
   I saw a ship. It ate my elephant.
 html: |-
   <p>I saw a ship. It ate my elephant.</p>
+asciidoc: |+
+  I saw a ship. It ate my elephant.
 ---
 name: extended block containing block start
 in: |-
@@ -50,6 +64,13 @@ html: |-
   <p>I saw a ship. It ate my elephant.</p>
   <p>When the elephant comes to take a p. you&#8230;</p>
   </blockquote>
+asciidoc: |+
+  ____
+  I saw a ship. It ate my elephant.
+
+  When the elephant comes to take a p. you&#8230;
+
+  ____
 --- 
 name: notextile block
 in: |-
@@ -92,6 +113,10 @@ in: |-
   pre. I saw a ship. It ate my elephant.
 html: |-
   <pre>I saw a ship. It ate my elephant.</pre>
+asciidoc: |+
+  ----
+  I saw a ship. It ate my elephant.
+  ----
 ---
 name: extended pre block containing block start
 in: |-
@@ -222,12 +247,17 @@ name: trademark and copyright
 desc: Conversion of trademark and copyright symbols.
 in: one(TM), two(R), three(C).
 html: <p>one&#8482;, two&#174;, three&#169;.</p>
+asciidoc: |+
+  one&#8482;, two&#174;, three&#169;.
 lite_mode_html: one&#8482;, two&#174;, three&#169;.
 --- 
 name: headers
 desc: To make an entire paragraph into a Header, place “h<em>n</em>.” at its beginning, where <em>n</em> is a number from 1-6.
 in: h3. Header 3
 html: <h3>Header 3</h3>
+asciidoc: |+
+
+  === Header 3
 --- 
 name: blockquote
 desc: To make an entire paragraph into a block quotation, place “bq.” before it.
@@ -243,6 +273,15 @@ html: |-
   <p>A block quotation.</p>
   </blockquote>
   <p>Any old text</p>
+asciidoc: |+
+  Any old text
+
+  ____
+  A block quotation.
+
+  ____
+
+  Any old text
 --- 
 name: footnote reference
 desc: Numeric references within text to footnotes appear between square brackets.
@@ -259,11 +298,15 @@ desc: Emphasis to text is added by surrounding a phrase with underscores.  In HT
 in: I _believe_ every word.
 html: <p>I <em>believe</em> every word.</p>
 lite_mode_html: "I <em>believe</em> every word."
+asciidoc: |+
+  I _believe_ every word.
 --- 
 name: strong
 desc: Strength can be give to text by surrounding with asterisks.  In HTML, this strength appears as <strong>bold</strong>.
 in: And then? She *fell*!
 html: <p>And then? She <strong>fell</strong>!</p>
+asciidoc: |+
+  And then? She *fell*!
 lite_mode_html: "And then? She <strong>fell</strong>!"
 ---
 name: strong phrase beginning with a number
@@ -279,6 +322,9 @@ in: |-
 html: |-
   <p>I <i>know</i>.<br />
   I <b>really</b> <i>know</i>.</p>
+asciidoc: |+
+  I _know_.
+  I *really* _know_.
 --- 
 name: citation
 desc: Use double question marks to indicate <em>citation</em>.  The title of a book, for instance.
@@ -313,6 +359,8 @@ name: superscript
 desc: To superscript a phrase, surround with carets.
 in: a ^2^ + b ^2^ = c ^2^
 html: <p>a <sup>2</sup> + b <sup>2</sup> = c <sup>2</sup></p>
+asciidoc: |+
+  a ^2^ + b ^2^ = c ^2^
 ---
 name: parenthetical superscript phrase
 in: '^(image courtesy NASA)^'
@@ -322,6 +370,8 @@ name: subscript
 desc: To subscript, surround with tildes.
 in: log ~2~ x
 html: <p>log <sub>2</sub> x</p>
+asciidoc: |+
+  log ~2~ x
 ---
 name: parenthetical subscript phrase
 in: '~(image courtesy NASA)~'
@@ -487,6 +537,10 @@ html: |-
   	<li>A second item</li>
   	<li>A third</li>
   </ol>
+asciidoc: |+
+  . A first item
+  . A second item
+  . A third
 --- 
 name: nested numbered lists
 desc: These lists may be nested by increasing the number of pound symbols preceding child entries.
@@ -512,6 +566,16 @@ html: |-
   		<li>Protein</li>
   	</ol></li>
   </ol>
+asciidoc: |+
+  . Fuel could be:
+  .. Coal
+  .. Gasoline
+  .. Electricity
+
+  . Humans need only:
+  .. Water
+  .. Protein
+
 --- 
 name: bulleted list
 desc: Bulleted lists use an asterisk in place of the pound.
@@ -550,11 +614,23 @@ html: |-
   		<li>Protein</li>
   	</ul></li>
   </ul>
+asciidoc: |+
+  * Fuel could be:
+  ** Coal
+  ** Gasoline
+  ** Electricity
+
+  * Humans need only:
+  ** Water
+  ** Protein
+
 --- 
 name: links
 desc: Basic links are comprised of a phrase which is linked to a <acronym title="Universal Resource Locator">URL</acronym>.  Place the descriptive phrase in quotation marks.  Follow it immediately by a colon and the URL.
 in: I searched "Google":http://google.com.
 html: <p>I searched <a href="http://google.com">Google</a>.</p>
+asciidoc: |+
+  I searched http://google.com[Google].
 lite_mode_html: I searched <a href="http://google.com">Google</a>.
 --- 
 name: link aliases
@@ -575,11 +651,15 @@ desc: You can embed an image in your Textile document by surrounding its URL wit
 in: "!http://hobix.com/sample.jpg!"
 html: <p><img src="http://hobix.com/sample.jpg" alt="" /></p>
 lite_mode_html: <img src="http://hobix.com/sample.jpg" alt="" />
+asciidoc: |+
+  image::http://hobix.com/sample.jpg[]
 --- 
 name: image title
 desc: A title for the image can also be provided in parens, just before the closing exclamation.
 in: "!openwindow1.gif(Bunny.)!"
 html: <p><img src="openwindow1.gif" title="Bunny." alt="Bunny." /></p>
+asciidoc: |+
+  image::openwindow1.gif[Bunny.]
 --- 
 name: image links
 desc: Links can be attached to images with a colon.
@@ -639,6 +719,26 @@ html: |-
   		<td> f </td>
   	</tr>
   </table>
+asciidoc: |+
+  [cols="3"]
+  |===
+  | name 
+  | age 
+  | sex 
+
+  | joan 
+  | 24 
+  | f 
+
+  | archie 
+  | 29 
+  | m 
+
+  | bella 
+  | 45 
+  | f 
+
+  |===
 --- 
 name: table headers
 desc: Specify header cells by marking them with an underscore and period.
@@ -670,6 +770,26 @@ html: |-
   		<td> f </td>
   	</tr>
   </table>
+asciidoc: |+
+  [cols="3", options="header"]
+  |===
+  |name 
+  |age 
+  |sex 
+
+  | joan 
+  | 24 
+  | f 
+
+  | archie 
+  | 29 
+  | m 
+
+  | bella 
+  | 45 
+  | f 
+
+  |===
 --- 
 name: table cell attributes
 desc: The period used above marks the end of a cell’s attributes.  Other attributes can be applied as well.
@@ -832,6 +952,15 @@ html: |-
   <div>Just a test.</div>
   <div>Second div.</div>
   <pre><code>A blockcode ends it.</code></pre>
+asciidoc: |+
+  Just a test.
+
+  Second div.
+
+  [source]
+  ----
+  A blockcode ends it.
+  ----
 ---
 name: extended block followed by notextile block
 in: |-
@@ -930,6 +1059,12 @@ html: |-
   <p>Just some <strong>*</strong> text</p>
   <hr />
   <p>Some more text.</p>
+asciidoc: |+
+  Just some *** text
+
+  '''
+
+  Some more text.
 ---
 name: horizontal rule using more than three asterisks
 in: |-

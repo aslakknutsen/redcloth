@@ -15,6 +15,15 @@ html: |-
   	<dt>maybe</dt>
   	<dd>yes</dd>
   </dl>
+asciidoc: |+
+  here is a RedCloth definition list:
+
+  yes::
+  no
+  no::
+  no
+  maybe::
+  yes
 ---
 name: with line breaks
 in: |-
@@ -47,6 +56,13 @@ html: |-
   	<dt>cloth</dt>
   	<dd>woven threads</dd>
   </dl>
+asciidoc: |+
+  You can have multiple terms before a definition:
+
+  textile::
+  fabric::
+  cloth::
+  woven threads
 ---
 name: not a definition list
 desc: a definition list with no definitions is not a definition list
